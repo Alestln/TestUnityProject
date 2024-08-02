@@ -7,7 +7,7 @@ namespace Assets.Scripts
 {
     public class StateMachine
     {
-        private State CurrentState { get; set; }
+        private State CurrentState;
 
         Dictionary<Type, State> _states = new Dictionary<Type, State>();
 

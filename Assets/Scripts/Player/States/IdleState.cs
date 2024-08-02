@@ -20,7 +20,7 @@ namespace Assets.Scripts.MovementStates
         {
             Debug.Log("Idle state [UPDATE]");
 
-            if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
+            if (Input.GetAxisRaw("Horizontal") != 0f || Input.GetAxisRaw("Vertical") != 0f)
             {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {

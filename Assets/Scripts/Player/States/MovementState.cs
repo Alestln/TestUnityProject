@@ -6,6 +6,7 @@ namespace Assets.Scripts.MovementStates
     {
         protected readonly Transform Transform;
         protected readonly float Speed;
+        protected Vector2 Velocity;
 
         public MovementState(StateMachine stateMachine, Transform transform, float speed) : base(stateMachine)
         {
@@ -15,14 +16,15 @@ namespace Assets.Scripts.MovementStates
 
         protected Vector2 ReadInput()
         {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            float verticalInput = Input.GetAxisRaw("Vertical");
             return new Vector2(horizontalInput, verticalInput).normalized;
         }
 
         protected void Move(Vector2 inputDirection)
         {
-            Transform.position += new Vector3(inputDirection.x, inputDirection.y, 0f) * (Speed * Time.deltaTime);
+            Vector3 move = Speed * Time.deltaTime * (Vector3)inputDirection;
+            Transform.Translate(move, Space.World);
         }
     }
 }
